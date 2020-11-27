@@ -11,20 +11,21 @@
   <body>
     <div class="layui-fluid">
         <div class="layui-row">
-            <form action="" method="post" class="layui-form layui-form-pane">
+            <form class="layui-form layui-form-pane">
+                <input type="text" name="id" hidden value="{{$user->id}}">
                 <div class="layui-form-item">
                     <label for="name" class="layui-form-label">
                         <span class="x-red">*</span>角色名
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="name" name="name" required="" lay-verify="required"
+                        <input type="text" id="name" name="name" value="{{$role->name}}" required="" lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">是否启用</label>
                     <div class="layui-input-block">
-                        <input type="checkbox"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
+                        <input type="checkbox"  lay-filter="encrypt" checked="{{$role->status}}"  lay-skin="switch" lay-text="开启|关闭">
                     </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
@@ -107,10 +108,11 @@
           form.on('submit(add)', function(data){
               let obj=data.field;
               obj.status=status;
+              var id=$('input[name=id]').val();
             $.ajax({
-                type:"POST",
+                type:"PUT",
                 dataType:'JSON',
-                url:'/admin/role',
+                url:'/admin/role'+id,
                 data:obj,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
