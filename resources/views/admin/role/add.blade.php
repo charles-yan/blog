@@ -17,7 +17,7 @@
                         <span class="x-red">*</span>角色名
                     </label>
                     <div class="layui-input-inline">
-                        <input type="text" id="name" name="name" required="" lay-verify="required"
+                        <input type="text" id="name" name="name" required=""  lay-verify="required"
                         autocomplete="off" class="layui-input">
                     </div>
                 </div>
@@ -27,34 +27,30 @@
                         <input type="checkbox"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
                     </div>
                 </div>
-{{--                <div class="layui-form-item layui-form-text">--}}
-{{--                    <label class="layui-form-label">--}}
-{{--                        拥有权限--}}
-{{--                    </label>--}}
-{{--                    <table  class="layui-table layui-input-block">--}}
-{{--                        <tbody>--}}
-{{--                        @foreach($perms as $item)--}}
-{{--                            <tr>--}}
-{{--                                <td>--}}
-{{--                                    @if(is_array($item->id,$own_perms))--}}
-{{--                                    <input type="checkbox" checked name="{{$item->title}}" value="{{$item->id}}" lay-skin="primary" lay-filter="father" title="{{$item->title}}">--}}
-{{--                                    @else--}}
-{{--                                        <input type="checkbox" name="{{$item->title}}" value="{{$item->id}}" lay-skin="primary" lay-filter="father" title="{{$item->title}}">--}}
-{{--                                    @endif--}}
-{{--                                </td>--}}
-{{--                                <td>--}}
-{{--                                    <div class="layui-input-block">--}}
-{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="显示">--}}
-{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="添加">--}}
-{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="修改">--}}
-{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="删除">--}}
-{{--                                    </div>--}}
-{{--                                </td>--}}
-{{--                            </tr>--}}
-{{--                         @endforeach--}}
-{{--                        </tbody>--}}
-{{--                    </table>--}}
-{{--                </div>--}}
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">
+                        拥有权限
+                    </label>
+                    <table  class="layui-table layui-input-block">
+                        <tbody>
+                        @foreach($perms as $item)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="{{$item->title}}" value="{{$item->id}}" lay-skin="primary" lay-filter="father" title="{{$item->title}}">
+                                </td>
+                                <td>
+                                    <div class="layui-input-block">
+                                        <input name="id[]" disabled lay-skin="primary" type="checkbox" value="2" title="显示">
+                                        <input name="id[]" disabled lay-skin="primary" type="checkbox" value="2" title="添加">
+                                        <input name="id[]" disabled lay-skin="primary" type="checkbox" value="2" title="修改">
+                                        <input name="id[]" disabled lay-skin="primary" type="checkbox" value="2" title="删除">
+                                    </div>
+                                </td>
+                            </tr>
+                         @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <div class="layui-form-item layui-form-text">
                     <label for="desc" class="layui-form-label">
                         描述

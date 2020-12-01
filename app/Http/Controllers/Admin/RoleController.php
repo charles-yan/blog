@@ -44,6 +44,7 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
+
         //获取表单发来的数据
         $input=$request->except('_token');
         //验证表单 角色名不能为空
@@ -94,16 +95,17 @@ class RoleController extends Controller
         $role= Role::find($id);
         //获取所有权限列表;
         $perms=Permission::get();
-
         //获取选中的权限ID
         $own_perms=Role::with(['rolePermission' => function($query){
             $query->with(['permission']);
         }])->find($id);
-        $arr=$own_perms->rolePermission[0]->permission[0]->toArray();
-        
-//        $a=array_keys($arr);
-//        dd($a);
-        return view('admin.role.edit',compact('role','perms'));
+        $own_arr=array();
+        if(count($own_perms->rolePermission)>0){
+            $arr=$own_perms->rolePermission[0]->permission->toArray();
+            $a=array_column($arr,null,'id');
+            $own_arr=array_keys($a);
+        };
+        return view('admin.role.edit',compact('role','perms','own_arr'));
     }
 
     /**
@@ -113,14 +115,24 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
         $role=Role::find($id);
         $status=$request->input('status');
         $name=$request->input('name');
+        $premssion_id=$request->input('premssion_id');
+//        $prems_id=$request->input('prems_id_1');
         if($name){
             $role->name=$name;
+        };
+
+        if(count($premssion_id)>0){
+            //删除原表数据关联的权限ID
+                \DB::table('role_permission')->where('role_id',$id)->delete();
+            //添加新数据
+            foreach ($premssion_id as $v){
+                \DB::table('role_permission')->insert(['role_id'=>$id,'permission_id'=>$v]);
+            }
         };
         $role->status=$status;
         $res=$role->save();

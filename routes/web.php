@@ -29,6 +29,8 @@ Route::group(['prefix'=>'admin','middleware'=>'IsLogin'],function (){
     Route::resource('user','Admin\UserController');
     //角色模块
     Route::resource('role','Admin\RoleController');
+
+
     //权限模块
     Route::resource('permission','Admin\PermissionController');
 });
