@@ -31,6 +31,6 @@ class Role extends Model
     //添加动态属性：关联权限表
     public function rolePermission(){
         return $this->belongsToMany(RolePermission::class,'permission','id','id','','permission_id');
-//        return $this->hasMany(RolePermission::class,'role_id','id');
     }
+
 }

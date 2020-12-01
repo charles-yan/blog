@@ -12,7 +12,7 @@
     <div class="layui-fluid">
         <div class="layui-row">
             <form class="layui-form layui-form-pane">
-                <input type="text" name="id" hidden value="{{$user->id}}">
+                <input type="text" name="id" hidden value="{{$role->id}}">
                 <div class="layui-form-item">
                     <label for="name" class="layui-form-label">
                         <span class="x-red">*</span>角色名

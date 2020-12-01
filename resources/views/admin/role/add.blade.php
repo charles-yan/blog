@@ -27,34 +27,34 @@
                         <input type="checkbox"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
                     </div>
                 </div>
-                <div class="layui-form-item layui-form-text">
-                    <label class="layui-form-label">
-                        拥有权限
-                    </label>
-                    <table  class="layui-table layui-input-block">
-                        <tbody>
-                        @foreach($perms as $item)
-                            <tr>
-                                <td>
+{{--                <div class="layui-form-item layui-form-text">--}}
+{{--                    <label class="layui-form-label">--}}
+{{--                        拥有权限--}}
+{{--                    </label>--}}
+{{--                    <table  class="layui-table layui-input-block">--}}
+{{--                        <tbody>--}}
+{{--                        @foreach($perms as $item)--}}
+{{--                            <tr>--}}
+{{--                                <td>--}}
 {{--                                    @if(is_array($item->id,$own_perms))--}}
 {{--                                    <input type="checkbox" checked name="{{$item->title}}" value="{{$item->id}}" lay-skin="primary" lay-filter="father" title="{{$item->title}}">--}}
 {{--                                    @else--}}
 {{--                                        <input type="checkbox" name="{{$item->title}}" value="{{$item->id}}" lay-skin="primary" lay-filter="father" title="{{$item->title}}">--}}
 {{--                                    @endif--}}
-                                </td>
-                                <td>
-                                    <div class="layui-input-block">
-                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="显示">
-                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="添加">
-                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="修改">
-                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="删除">
-                                    </div>
-                                </td>
-                            </tr>
-                         @endforeach
-                        </tbody>
-                    </table>
-                </div>
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <div class="layui-input-block">--}}
+{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="显示">--}}
+{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="添加">--}}
+{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="修改">--}}
+{{--                                        <input name="id[]" lay-skin="primary" type="checkbox" value="2" title="删除">--}}
+{{--                                    </div>--}}
+{{--                                </td>--}}
+{{--                            </tr>--}}
+{{--                         @endforeach--}}
+{{--                        </tbody>--}}
+{{--                    </table>--}}
+{{--                </div>--}}
                 <div class="layui-form-item layui-form-text">
                     <label for="desc" class="layui-form-label">
                         描述
@@ -74,15 +74,6 @@
             $ = layui.jquery;
           var form = layui.form
           ,layer = layui.layer;
-
-          //自定义验证规则
-          // form.verify({
-          //   name: function(value){
-          //     if(value.length <= 0){
-          //       return '角色名称不能为空';
-          //     }
-          //   }
-          // });
             let status=0;
             form.on('switch(encrypt)', function(data){
                 console.log(data.elem.checked); //开关是否开启，true或者false
@@ -109,23 +100,15 @@
                             // 可以对父窗口进行刷新
                             xadmin.father_reload();
                         });
+                        return;
                     };
                     layer.alert(res.message,{icon:5});
                 }
             });
-            //发异步，把数据提交给php
-            // layer.alert("增加成功", {icon: 6},function () {
-            //     // 获得frame索引
-            //     var index = parent.layer.getFrameIndex(window.name);
-            //     //关闭当前frame
-            //     parent.layer.close(index);
-            // });
+
             return false;
           });
-
-
         form.on('checkbox(father)', function(data){
-
             if(data.elem.checked){
                 $(data.elem).parent().siblings('td').find('input').prop("checked", true);
                 form.render();
@@ -133,17 +116,9 @@
                $(data.elem).parent().siblings('td').find('input').prop("checked", false);
                 form.render();
             }
-        });
-
-
+         });
         });
     </script>
-    <script>var _hmt = _hmt || []; (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-      })();</script>
   </body>
 
 </html>

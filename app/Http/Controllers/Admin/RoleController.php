@@ -99,8 +99,10 @@ class RoleController extends Controller
         $own_perms=Role::with(['rolePermission' => function($query){
             $query->with(['permission']);
         }])->find($id);
-
-        dd($own_perms->toArray());
+        $arr=$own_perms->rolePermission[0]->permission[0]->toArray();
+        
+//        $a=array_keys($arr);
+//        dd($a);
         return view('admin.role.edit',compact('role','perms'));
     }
 
