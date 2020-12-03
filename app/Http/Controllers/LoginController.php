@@ -61,4 +61,7 @@ class LoginController extends Controller
         return redirect('admin/login');
         //返回首页
     }
+    public function noperms(){
+        return view('admin/noPermission');
+    }
 }

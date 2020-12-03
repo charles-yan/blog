@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Model\Permission;
+use App\Model\Cate;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PermissionController extends Controller
+class CateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $perms=Permission::paginate(10);
-        return  view('admin.permission.list',compact('perms'));
+        $cate=Cate::get();
+        return view('admin.cate.list',compact('cate'));
     }
 
     /**
@@ -26,7 +26,8 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return  view('admin.permission.list');
+        //
+        return view('admin.cate.list');
     }
 
     /**

@@ -12,7 +12,7 @@ class RolePermission extends Model
 
     protected $guarded = [];
 
-    public function permission(){
-        return $this->hasMany(Permission::class,'id','permission_id');
-    }
+//    public function permission(){
+//        return $this->hasMany(Permission::class,'id','permission_id');
+//    }
 }

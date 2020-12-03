@@ -66,18 +66,17 @@
                                   <th>ID</th>
                                   <th>权限规则</th>
                                   <th>权限名称</th>
-                                  <th>所属分类</th>
                                   <th>操作</th>
                               </thead>
                               <tbody>
+                              @foreach($perms as $item)
                                 <tr>
                                   <td>
                                    <input type="checkbox" name=""  lay-skin="primary">
                                   </td>
-                                  <td>1</td>
-                                  <td>admin/user/userlist</td>
-                                  <td>会员列表</td>
-                                  <td>会员相关</td>
+                                  <td>{{$item->id}}</td>
+                                  <td>{{$item->urls}}</td>
+                                  <td>{{$item->title}}</td>
                                   <td class="td-manage">
                                     <a title="编辑"  onclick="xadmin.open('编辑','xxx.html')" href="javascript:;">
                                       <i class="layui-icon">&#xe642;</i>
@@ -87,18 +86,24 @@
                                     </a>
                                   </td>
                                 </tr>
+                              @endforeach
                               </tbody>
                             </table>
                         </div>
                         <div class="layui-card-body ">
                             <div class="page">
                                 <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
+                                    @if($perms->onFirstPage())
+                                        <a class="prev-dark" href="javascript:;">&lt;&lt;</a>
+                                    @else
+                                        <a class="prev-active" href="{{$perms->previousPageUrl()}}">&lt;&lt;</a>
+                                    @endif
+                                     <span  class="current">{{$perms->currentPage()}}</span>
+                                        @if($perms->hasMorePages())
+                                            <a class="move-active" href="{{$perms->nextPageUrl()}}">&gt;&gt;</a>
+                                        @else
+                                            <a class="move-dark" href="javascript:;">&gt;&gt;</a>
+                                        @endif
                                 </div>
                             </div>
                         </div>

@@ -100,7 +100,7 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <a onclick="xadmin.add_tab('多级分类','cate.html')">
+                        <a onclick="xadmin.add_tab('多级分类','/admin/cate')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>多级分类</cite></a>
                     </li>

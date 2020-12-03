@@ -29,8 +29,8 @@ class Role extends Model
 //     public $timestamps=false;
 
     //添加动态属性：关联权限表
-    public function rolePermission(){
-        return $this->belongsToMany(RolePermission::class,'permission','id','id','','permission_id');
+    public function permission(){
+        return $this->belongsToMany(Permission::class,'role_permission','role_id','permission_id','','id');
     }
 
 }

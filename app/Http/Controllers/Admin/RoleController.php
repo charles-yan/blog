@@ -96,12 +96,10 @@ class RoleController extends Controller
         //获取所有权限列表;
         $perms=Permission::get();
         //获取选中的权限ID
-        $own_perms=Role::with(['rolePermission' => function($query){
-            $query->with(['permission']);
-        }])->find($id);
+        $own_perms=Role::with(['permission'])->find($id);
         $own_arr=array();
-        if(count($own_perms->rolePermission)>0){
-            $arr=$own_perms->rolePermission[0]->permission->toArray();
+        if(count($own_perms->permission)>0){
+            $arr=$own_perms->permission->toArray();
             $a=array_column($arr,null,'id');
             $own_arr=array_keys($a);
         };
@@ -121,10 +119,13 @@ class RoleController extends Controller
         $status=$request->input('status');
         $name=$request->input('name');
         $premssion_id=$request->input('premssion_id');
-//        $prems_id=$request->input('prems_id_1');
+        $desc=$request->input('desc');
         if($name){
             $role->name=$name;
         };
+        if($desc){
+            $role->desc=$desc;
+        }
 
         if(count($premssion_id)>0){
             //删除原表数据关联的权限ID

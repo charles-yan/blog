@@ -22,5 +22,9 @@ class User extends Model
     //禁用时间戳 因为Eloquent会默认加入时间戳，可表中无这两个字段
 //    public $timestamps=false;
 
+    //添加动态属性：关联权限表
+    public function role(){
+        return $this->belongsToMany(Role::class,'user_role','user_id','role_id','','id');
+    }
 
 }

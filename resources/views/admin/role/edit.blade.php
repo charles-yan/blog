@@ -25,7 +25,11 @@
             <div class="layui-form-item">
                 <label class="layui-form-label">是否启用</label>
                 <div class="layui-input-block">
-                    <input type="checkbox" checked="{{$role->status}}" value="{{$role->status}}" id="encrypt"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
+                    @if($role->status==1)
+                        <input type="checkbox" checked value="{{$role->status}}" id="encrypt"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
+                    @else
+                        <input type="checkbox"  value="{{$role->status}}" id="encrypt"  lay-filter="encrypt"  lay-skin="switch" lay-text="开启|关闭">
+                    @endif
                 </div>
             </div>
             <div class="layui-form-item layui-form-text">
@@ -70,7 +74,7 @@
                     描述
                 </label>
                 <div class="layui-input-block">
-                    <textarea placeholder="请输入内容" id="desc" name="desc" class="layui-textarea"></textarea>
+                    <textarea placeholder="请输入内容"  id="desc" name="desc" class="layui-textarea">{{$role->desc}}</textarea>
                 </div>
             </div>
             <div class="layui-form-item">

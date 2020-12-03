@@ -18,13 +18,16 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'admin','namespase'=>'admin',],function(){
     Route::get('login','LoginController@login');
     Route::post('doLogin','LoginController@doLogin');
+    Route::get('noPermission','LoginController@noperms');
 });
 
 //添加中间件 限制未登录时打开
-Route::group(['prefix'=>'admin','middleware'=>'IsLogin'],function (){
+Route::group(['prefix'=>'admin','middleware'=>['hasRole','IsLogin']],function (){
     Route::get('index','LoginController@index');
     Route::get('welcome','LoginController@welcome');
     Route::get('logout','LoginController@logout');
+    //暂无权限
+
     //后台用户相关模块
     Route::resource('user','Admin\UserController');
     //角色模块
@@ -33,6 +36,9 @@ Route::group(['prefix'=>'admin','middleware'=>'IsLogin'],function (){
 
     //权限模块
     Route::resource('permission','Admin\PermissionController');
+
+    //分类模块
+    Route::resource('cate','Admin\CateController');
 });
 
 

@@ -56,8 +56,8 @@
                                   </td>
                                   <td>{{$item->id}}</td>
                                   <td>{{$item->name}}</td>
-                                  <td>会员列表，问题列表</td>
-                                  <td>具有至高无上的权利</td>
+                                  <td>/</td>
+                                  <td>{{$item->desc}}</td>
                                   <td class="td-status">
                                       @if($item->status==1)
                                           <span class="layui-btn layui-btn-normal layui-btn-sm">已启用</span>
@@ -192,7 +192,7 @@
               $.ajax({
                   type:"DELETE",
                   url:'/admin/rold/' + ids,
-                  dataType:'json',
+                  dataType:'JSON',
                   headers: {
                       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                   },

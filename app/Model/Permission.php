@@ -28,4 +28,8 @@ class Permission extends Model
     //禁用时间戳 因为Eloquent会默认加入时间戳，可表中无这两个字段
 //    public $timestamps=false;
 
+//    public function permission(){
+//        return $this->hasMany(RolePermission::class,'id','permission_id');
+//    }
+
 }
