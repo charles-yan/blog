@@ -20,14 +20,15 @@
                           autocomplete="off" class="layui-input">
                       </div>
                   </div>
-                    <div class="layui-form-item">
+                    <div class="layui-form-item flex-start">
                         <label for="username" class="layui-form-label">
                             <span class="x-red">*</span>父级分类
                         </label>
-                        <div class="layui-input-inline">
-                            <input disabled type="text" id="cate_pid" name="cate_pid" required="" lay-verify="required"
-                                   autocomplete="off" class="layui-input" value="0">
-                        </div>
+                            <select name="cate_pid" lay-verify="" style="width:180px;">
+                                @foreach($parent as $v)
+                                    <option value="{{$v->cate_id}}">{{$v->cate_name}}</option>
+                                @endforeach
+                            </select>
                     </div>
                     <div class="layui-form-item">
                         <label for="username" class="layui-form-label">
@@ -76,7 +77,7 @@
                     $.ajax({
                         type:"POST",
                         dataType:'JSON',
-                        url:'/admin/cate',
+                        url:'/admin/cate/addchild',
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

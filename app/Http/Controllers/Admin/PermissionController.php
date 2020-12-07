@@ -26,7 +26,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        return  view('admin.permission.list');
+        return  view('admin.permission.add');
     }
 
     /**
@@ -38,6 +38,30 @@ class PermissionController extends Controller
     public function store(Request $request)
     {
         //
+        $input=$request->except('_token');
+        $title=$input['title'];
+        $urls=$input['urls'];
+        $data=[];
+        if(Permission::where('urls',$urls)->first()){
+            $data=[
+                'status'=>'fail',
+                'message'=>'该权限已存在！'
+            ];
+        }else{
+            $res=Permission::create($input);
+            if($res){
+                $data=[
+                    'status'=>'success',
+                    'message'=>'添加成功'
+                ];
+            }else{
+                $data=[
+                    'status'=>'fail',
+                    'message'=>'添加失败'
+                ];
+            };
+        };
+        return $data;
     }
 
     /**
@@ -60,6 +84,8 @@ class PermissionController extends Controller
     public function edit($id)
     {
         //
+        $prems=Permission::find($id);
+        return view('admin.permission.edit',compact('prems'));
     }
 
     /**
@@ -72,6 +98,26 @@ class PermissionController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $prems=Permission::find($id);
+        $status=$request->input('status');
+        $title=$request->input('title');
+        $urls=$request->input('urls');
+        $prems->urls=$urls;
+        $prems->title=$title;
+        $prems->status=$status;
+        $res=$prems->save();
+        if($res){
+            $data=[
+                'status'=>'success',
+                'message'=>'更新成功'
+            ];
+        }else{
+            $data=[
+                'status'=>'success',
+                'message'=>'更新成功'
+            ];
+        };
+        return $data;
     }
 
     /**
@@ -83,5 +129,19 @@ class PermissionController extends Controller
     public function destroy($id)
     {
         //
+        $arr=explode(',',$id);
+        $res=Permission::destroy($arr);
+        if($res){
+            $data=[
+                'status'=>'success',
+                'message'=>'删除成功'
+            ];
+        }else{
+            $data=[
+                'status'=>'fail',
+                'message'=>'删除失败'
+            ];
+        };
+        return $data;
     }
 }

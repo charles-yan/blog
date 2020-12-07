@@ -33,12 +33,16 @@ Route::group(['prefix'=>'admin','middleware'=>['hasRole','IsLogin']],function ()
     //角色模块
     Route::resource('role','Admin\RoleController');
 
-
     //权限模块
     Route::resource('permission','Admin\PermissionController');
 
     //分类模块
     Route::resource('cate','Admin\CateController');
+    Route::post('cate/changeorder','Admin\CateController@changeOrder');
+    Route::resource('cate/addchild','Admin\CateChildController');
+    //文章模块
+    Route::resource('article','Admin\ArticleController');
+
 });
 
 

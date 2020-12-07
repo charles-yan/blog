@@ -15,4 +15,32 @@ class Cate extends Model
      * @var array
      */
     protected $guarded = [];
+
+    public $timestamps=false;
+
+    //格式化分类
+    public function tree(){
+        //先获取数据并排序下
+        $cate=$this->orderBy('cate_order','asc')->get();
+       return $this->getTree($cate);
+    }
+    public function getTree($category){
+        //格式化分类
+        //先找到一级分类
+        $arr=[];
+        foreach ($category as $k=>$v){
+            if($v->cate_pid==0){
+                $arr[]=$v;
+//                获取一级下的二级分类
+                foreach ($category as $m=>$n){
+                    if($v->cate_id==$n->cate_pid){
+                        $n->cate_name='  |--- '.$n->cate_name;
+                        $arr[]=$n;
+                    }
+                }
+            }
+        };
+        return $arr;
+    }
+
 }

@@ -16,7 +16,7 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $role=Role::get();
+        $role=Role::paginate(10);
         return  view('admin.role.list',compact('role'));
     }
 
@@ -28,7 +28,7 @@ class RoleController extends Controller
     public function create()
     {
         //获取所有权限列表;
-        $perms=Permission::get();
+        $perms=Permission::paginate(10);
 //        $own_perms=Role::with(['rolePermission' => function($query){
 //            $query->with(['permission']);
 //        }])->find(1);
@@ -94,7 +94,7 @@ class RoleController extends Controller
         //修改用户信息
         $role= Role::find($id);
         //获取所有权限列表;
-        $perms=Permission::get();
+        $perms=Permission::paginate(10);
         //获取选中的权限ID
         $own_perms=Role::with(['permission'])->find($id);
         $own_arr=array();

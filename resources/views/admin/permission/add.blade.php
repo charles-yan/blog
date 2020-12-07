@@ -50,11 +50,11 @@
                 //监听提交
                 form.on('submit(add)', function(data) {
                     let obj=data.field;
-                    obj.is_active=is_active;
+                    obj.status=1;
                     $.ajax({
                         type:"POST",
                         dataType:'JSON',
-                        url:'/admin/user',
+                        url:'/admin/permission',
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },

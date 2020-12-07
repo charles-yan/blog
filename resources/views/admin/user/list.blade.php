@@ -88,15 +88,20 @@
                               </tbody>
                             </table>
                         </div>
-                        <div class="layui-card-body ">
+                        <div class="layui-card-body">
                             <div class="page">
                                 <div>
-                                  <a class="prev" href="">&lt;&lt;</a>
-                                  <a class="num" href="">1</a>
-                                  <span class="current">2</span>
-                                  <a class="num" href="">3</a>
-                                  <a class="num" href="">489</a>
-                                  <a class="next" href="">&gt;&gt;</a>
+                                    @if($user->onFirstPage())
+                                        <a class="prev-dark" href="javascript:;">&lt;&lt;</a>
+                                    @else
+                                        <a class="prev-active" href="{{$user->previousPageUrl()}}">&lt;&lt;</a>
+                                    @endif
+                                    <span  class="current">{{$user->currentPage()}}</span>
+                                    @if($user->hasMorePages())
+                                        <a class="move-active" href="{{$user->nextPageUrl()}}">&gt;&gt;</a>
+                                    @else
+                                        <a class="move-dark" href="javascript:;">&gt;&gt;</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

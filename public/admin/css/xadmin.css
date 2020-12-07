@@ -11,7 +11,7 @@ a{
 html{
     width: 100%;
     height: 100%;
-    overflow-x:hidden; 
+    overflow-x:hidden;
     overflow-y:auto;
 }
 body{
@@ -211,7 +211,7 @@ body{
     /*background: #fff ;*/
 }
 .left-nav #nav li .opened .current{
-    
+
 }
 .left-nav #nav li .sub-menu li:hover{
     /*color: blue;*/
@@ -318,7 +318,7 @@ body{
 .page-content .layui-tab-content .layui-tab-item{
     width: 100%;
     height: 100%;
-    
+
 }
 .page-content .layui-tab-content .layui-tab-item iframe{
     width: 100%;
@@ -434,8 +434,8 @@ table th, table td {
         left: 60px;
     }
     .page-content .layui-tab-content .layui-tab-item{
-        -webkit-overflow-scrolling: touch; 
-        overflow-y: scroll; 
+        -webkit-overflow-scrolling: touch;
+        overflow-y: scroll;
     }
     .x-so input.layui-input{
         width: 100%;
@@ -491,7 +491,7 @@ table th, table td {
     font-size: 12px;
 }
 .x-admin-sm  .layui-breadcrumb>*{
-   font-size: 12px; 
+   font-size: 12px;
 }
 .x-admin-sm  .layui-btn,.x-admin-sm .layui-btn-xs,.x-admin-sm .layui-btn-sm{
     font-size: 12px;
@@ -530,5 +530,145 @@ table th, table td {
     line-height: 300px;
     font-size: 300px;
     color: #393D49;
+}
+
+/***********flex样式************/
+
+.flex-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.flex-start-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flex-start-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+.flex-center-start {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+.flex-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flex-row-center {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.flex-end-center{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flex-center-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.flex-col-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.flex-col-left-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:flex-start ;
+}
+.flex-col-end-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.flex-col-end-start{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items:flex-start;
+}
+.flex-col-end-end{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.flex-col-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.flex-col-end {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flex-end {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.flex-space-between {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flex-space-around {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+
+
+.flex-col-space-between {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.align-items-stretch{
+    align-items: stretch;
+}
+.flex-item {
+    flex: 1;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
 }
 

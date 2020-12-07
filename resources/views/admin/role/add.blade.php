@@ -50,6 +50,23 @@
                          @endforeach
                         </tbody>
                     </table>
+                    <div class="layui-card-body">
+                        <div class="page">
+                            <div>
+                                @if($perms->onFirstPage())
+                                    <a class="prev-dark" href="javascript:;">&lt;&lt;</a>
+                                @else
+                                    <a class="prev-active" href="{{$perms->previousPageUrl()}}">&lt;&lt;</a>
+                                @endif
+                                <span  class="current">{{$perms->currentPage()}}</span>
+                                @if($perms->hasMorePages())
+                                    <a class="move-active" href="{{$perms->nextPageUrl()}}">&gt;&gt;</a>
+                                @else
+                                    <a class="move-dark" href="javascript:;">&gt;&gt;</a>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="layui-form-item layui-form-text">
                     <label for="desc" class="layui-form-label">
